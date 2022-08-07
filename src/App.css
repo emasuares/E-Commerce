@@ -8,4 +8,7 @@
 
 
 
-
+.card {
+  background-color: #cab5a6 !important;
+  border-style: hidden !important;
+}

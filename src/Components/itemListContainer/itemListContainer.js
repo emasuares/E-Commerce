@@ -12,7 +12,6 @@ const ItemListContainer =({greetings}) => {
     const [loading,setLoading]=useState(true)
     const [products,setProducts]=useState([])
     const params =useParams()
-    console.log(params.category)
         useEffect(()=>{
             if (params.categoryId){
             getProductByCategory(params.categoryId).then(Response=>{

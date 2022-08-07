@@ -1,7 +1,7 @@
 import './Navbar.css'
 import Button from '../button/button'
 import Cartwidget from '../Cartwidget/Cartwidget'
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 
 const Navbar = () => {
@@ -14,11 +14,11 @@ const Navbar = () => {
                     <div className='cartContainer'>
                         <Link className='btn' to='/'>Inicio</Link>
                         <NavDropdown title="Productos" id="navbarScrollingDropdown">
-                        <Link to={'category/Camisas'} href="#action3">Camisas</Link>
-                        <Link to={'category/Sweaters'} href="#action4">Sweaters</Link>
-                        <Link to={'category/Pantalones'} href="#action5">Pantalones</Link>
+                        <NavDropdown.Item as={Link} to={'category/Camisas'} href="#action3">Camisas</NavDropdown.Item>
+                       <NavDropdown.Item as={Link} to={'category/Sweaters'} href="#action4">Sweaters</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to={'category/Pantalones'} href="#action5">Pantalones</NavDropdown.Item>
                         </NavDropdown>
-                        <Button handleClick={() => console.log('contacto')}>Contacto</Button>
+                        <Button>Contacto</Button>
                     </div>
                     <div>
                         <Cartwidget/>

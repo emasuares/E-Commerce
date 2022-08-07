@@ -1,0 +1,10 @@
+.counterDiv{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin: 1em;
+}
