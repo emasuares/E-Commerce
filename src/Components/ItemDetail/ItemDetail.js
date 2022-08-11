@@ -1,14 +1,18 @@
 import Counter from "../counter/counter"
-import { useState } from "react"
+import { useState,useContext } from "react"
 import { Link } from "react-router-dom"
 import Button from 'react-bootstrap/Button';
+import {CartContext} from "../../Context/CartContext";
 
 const ItemDetail =({item})=>{
+    const {addItem,getProductQuantity} = useContext(CartContext)
     const [quantity , setQuantity] = useState(0)
+    const quantityAdded =getProductQuantity(item.id)
     const handleOnAdd=(stock,quantity)=>{
-        if (stock!=0){
+        if (stock!==0){
           console.log("Items Agregados Al Carrito", quantity)
           setQuantity(quantity)
+          addItem({...item,quantity})
         }else{
           console.log("No hay stock de este producto")
         }
@@ -16,7 +20,7 @@ const ItemDetail =({item})=>{
     return(
         <div>
             <div>
-                <img src={item.img}></img>
+                <img alt="imagen de producto" src={item.img}></img>
             </div>
             <div>
                 <p>{item.category}</p>
@@ -25,7 +29,7 @@ const ItemDetail =({item})=>{
                 <p>${item.price}</p>
             </div>
             <div>
-              {quantity>0 ? <Button variant="dark" as={Link} to='/cart'>Ir Al Carrito</Button> : <Counter initial={1} stock= {item.stock} onAdd={handleOnAdd} />}
+              {quantity>0 ? <Button variant="outline-dark" as={Link} to='/cart'>Ir Al Carrito</Button> : <Counter initial={quantityAdded} stock= {item.stock} onAdd={handleOnAdd} />}
            
             </div>
         </div>

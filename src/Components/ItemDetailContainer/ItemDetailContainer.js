@@ -1,9 +1,12 @@
 import ItemDetail from "../ItemDetail/ItemDetail"; 
-import { useEffect,useState } from "react";
+import { useEffect,useState,useContext } from "react";
 import { getItem } from "../../asyncMock";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../../Context/CartContext";
+
 
 const GetItemDetail=()=>{
+    const {addItem} = useContext(CartContext)
     const [loading,setLoading]=useState(true)
     const [item,setItem]=useState({})
     const params =useParams()
@@ -25,7 +28,7 @@ const GetItemDetail=()=>{
 
     return(
         <div>
-            <ItemDetail item={item}/>
+            <ItemDetail item={item} addItem={addItem}/>
         </div>
         
 

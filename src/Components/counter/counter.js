@@ -3,18 +3,20 @@ import Button from 'react-bootstrap/Button';
 import './counter.css'
 
 
+
 const Counter =({initial,stock,onAdd}) => {
-    const [count, setcount ] = useState(1)
+    const [count, setcount ] = useState(initial)
+
 
     const increment =() =>{
-        if (count<stock && stock!=0){
+        if (count<stock && stock!==0){
             setcount(count+1)
         }
         
     }
 
     const decrement =() =>{
-        if (count>initial && stock!=0) {
+        if (count>1 && stock!==0) {
             setcount(count-1)
         }
         
