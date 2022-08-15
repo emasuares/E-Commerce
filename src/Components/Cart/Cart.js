@@ -14,7 +14,7 @@ export const CartView =()=>{
         })
         return(
             <div>
-                <h1>Carrito de Compras</h1><Button onClick={()=>clearCart()}>Vaciar Carrito</Button>
+                <h1>Carrito de Compras</h1>
                 <Table>
                     <tbody>
                     {cart.map(prod=>
@@ -28,6 +28,7 @@ export const CartView =()=>{
                     </tbody>
                 </Table>
                 <div>TOTAL :${total}  </div>
+                <Button onClick={()=>clearCart()}>Vaciar Carrito</Button>
                 <Button>Crear Orden</Button>
             </div>
         )

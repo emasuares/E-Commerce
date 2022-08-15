@@ -10,7 +10,6 @@ const ItemDetail =({item})=>{
     const quantityAdded =getProductQuantity(item.id)
     const handleOnAdd=(stock,quantity)=>{
         if (stock!==0){
-          console.log("Items Agregados Al Carrito", quantity)
           setQuantity(quantity)
           addItem({...item,quantity})
         }else{
