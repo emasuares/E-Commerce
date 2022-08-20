@@ -13,7 +13,7 @@ const ItemDetail =({item})=>{
           setQuantity(quantity)
           addItem({...item,quantity})
         }else{
-          console.log("No hay stock de este producto")
+          alert("No hay stock de este producto")
         }
       }
     return(

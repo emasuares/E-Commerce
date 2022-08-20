@@ -6,14 +6,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import GetItemDetail from './Components/ItemDetailContainer/ItemDetailContainer';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import {CartContextProvider} from './Context/CartContext'
-import {UserContextProvider} from './Context/userContext'
 import {CartView} from './Components/Cart/Cart'
+import {CheckOut} from './Components/CheckOut/CheckOut'
 function App() {
   
 
   return (
     <div className="App">
-      <UserContextProvider>
         <CartContextProvider>
           <BrowserRouter>
             <Navbar/>
@@ -22,10 +21,10 @@ function App() {
               <Route path='/category/:categoryId' element={<ItemListContainer greetings='Productos'/>}></Route>
               <Route path='/detail/:productId' element={<GetItemDetail/>} />
               <Route path='/cart' element={<CartView/>} />
+              <Route path='/checkout' element={<CheckOut/>} />
             </Routes>
           </BrowserRouter>
         </CartContextProvider>
-      </UserContextProvider>
     </div>
   );
 }

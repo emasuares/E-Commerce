@@ -17,7 +17,7 @@ const Navbar = () => {
                  <div className='cartContainer'>
                     <div className='cartContainer'>
                         <Link className='btn' to='/'>Inicio</Link>
-                        <NavDropdown title="Productos" id="navbarScrollingDropdown">
+                        <NavDropdown title="Categorias" id="navbarScrollingDropdown">
                         <NavDropdown.Item as={Link} to={'category/Camisas'} href="#action3">Camisas</NavDropdown.Item>
                        <NavDropdown.Item as={Link} to={'category/Sweaters'} href="#action4">Sweaters</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to={'category/Pantalones'} href="#action5">Pantalones</NavDropdown.Item>

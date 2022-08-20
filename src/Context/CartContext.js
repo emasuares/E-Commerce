@@ -1,15 +1,26 @@
-import { useState, createContext } from "react";      
+import { useState, createContext, useEffect } from "react";      
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 export const CartContext =createContext()
 
 export const CartContextProvider =({children})=>{
 const [cart,setCart] = useState([])
-
-
+const [total,setTotal]=useState(0)
+let added=0
 
  const addItem =(productToAdd)=>{
+    const MySwal = withReactContent(Swal)
     if(!isInCart(productToAdd.id)){
-  setCart([...cart, productToAdd])
+    setCart([...cart, productToAdd]) 
+    new MySwal({
+        title: 'Se agregaron '+productToAdd.quantity+'productos al carrito!',
+        icon: 'success',
+        showCancelButton: false,
+        showConfirmButton: false,
+        timer:'1500',
+        position: "top-end",
+      })   
     }else {
         const cartUpdated= cart.map(prod=> {
            if(prod.id===productToAdd.id){
@@ -53,9 +64,19 @@ const isInCart =(id) =>{
 const clearCart =()=>{
     setCart([])
 }
-
+        
+        useEffect(()=>{
+            if(cart.length !== 0){
+                let addition=cart.map(prod=>prod.price*prod.quantity)
+                let added=addition.reduce((previousValue,currentValue,index,array)=>{
+                    return previousValue+currentValue
+                })  
+                setTotal(added)
+                
+            }
+            },[cart])
     return (
-        <CartContext.Provider value ={{cart , addItem , isInCart, removeItem ,getQuantity, getProductQuantity , clearCart}}>
+        <CartContext.Provider value ={{cart , addItem , isInCart, removeItem ,getQuantity, getProductQuantity , clearCart,total}}>
             {children}
             </CartContext.Provider>
     )

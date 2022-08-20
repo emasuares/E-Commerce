@@ -12,3 +12,12 @@
   background-color: #cab5a6 !important;
   border-style: hidden !important;
 }
+
+.checkout {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  width: 50em;
+}

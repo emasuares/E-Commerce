@@ -6,12 +6,8 @@ import { Link } from 'react-router-dom';
 
 
 export const CartView =()=>{
-    const {cart , removeItem, clearCart} = useContext(CartContext)
-        if(cart.length !== 0){
-        let addition=cart.map(prod=>prod.price*prod.quantity)
-        let total=addition.reduce((previousValue,currentValue,index,array)=>{
-            return previousValue+currentValue
-        })
+    const {cart , removeItem, clearCart,total} = useContext(CartContext)
+    if(cart.length !== 0){ 
         return(
             <div>
                 <h1>Carrito de Compras</h1>
@@ -29,7 +25,7 @@ export const CartView =()=>{
                 </Table>
                 <div>TOTAL :${total}  </div>
                 <Button onClick={()=>clearCart()}>Vaciar Carrito</Button>
-                <Button>Crear Orden</Button>
+                <Button as={Link} to={'/checkout'}>Terminar Compra</Button>
             </div>
         )
          }else {
