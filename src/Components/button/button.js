@@ -1,4 +1,4 @@
-import props from '../Navbar/Navbar'
+
 
 
 const Button = (props) => {

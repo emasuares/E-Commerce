@@ -7,14 +7,14 @@ export const CartContext =createContext()
 export const CartContextProvider =({children})=>{
 const [cart,setCart] = useState([])
 const [total,setTotal]=useState(0)
-let added=0
+
 
  const addItem =(productToAdd)=>{
     const MySwal = withReactContent(Swal)
     if(!isInCart(productToAdd.id)){
     setCart([...cart, productToAdd]) 
     new MySwal({
-        title: 'Se agregaron '+productToAdd.quantity+'productos al carrito!',
+        title: 'Se agregaron '+productToAdd.quantity+' productos al carrito!',
         icon: 'success',
         showCancelButton: false,
         showConfirmButton: false,
@@ -67,12 +67,11 @@ const clearCart =()=>{
         
         useEffect(()=>{
             if(cart.length !== 0){
-                let addition=cart.map(prod=>prod.price*prod.quantity)
-                let added=addition.reduce((previousValue,currentValue,index,array)=>{
-                    return previousValue+currentValue
-                })  
-                setTotal(added)
-                
+                let addition=0;
+                cart.map(prod=>
+                    addition+=prod.quantity*prod.price
+                )
+                setTotal(addition)
             }
             },[cart])
     return (

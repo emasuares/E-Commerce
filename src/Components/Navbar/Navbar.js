@@ -1,13 +1,32 @@
 import './Navbar.css'
-import Button from '../button/button'
 import Cartwidget from '../Cartwidget/Cartwidget'
 import {Link} from 'react-router-dom'
-import NavDropdown from 'react-bootstrap/NavDropdown'
+import { useEffect, useState} from 'react'
 import { useContext } from 'react'
 import { CartContext } from '../../Context/CartContext'
+import { getCategories } from '../../Services/Firebase/Firestore'
 
 const Navbar = () => {
     const {cart}=useContext(CartContext)
+    const [categories, setCategories] = useState([])
+    
+   
+        useEffect(()=>{
+            getCategories().then(response=>{
+                setCategories(response)
+            }).catch(error=>{
+                console.log(error)
+            })
+        },[])
+            
+    
+
+    
+
+
+
+
+
     if (cart.length !==0){
     return (
             <nav className='navbar'>
@@ -17,12 +36,7 @@ const Navbar = () => {
                  <div className='cartContainer'>
                     <div className='cartContainer'>
                         <Link className='btn' to='/'>Inicio</Link>
-                        <NavDropdown title="Categorias" id="navbarScrollingDropdown">
-                        <NavDropdown.Item as={Link} to={'category/Camisas'} href="#action3">Camisas</NavDropdown.Item>
-                       <NavDropdown.Item as={Link} to={'category/Sweaters'} href="#action4">Sweaters</NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to={'category/Pantalones'} href="#action5">Pantalones</NavDropdown.Item>
-                        </NavDropdown>
-                        <Button>Contacto</Button>
+                            {categories.map(category=><Link key={category.id} className='btn' as={Link} to={`category/${category.description}`} >{category.description}</Link>)}
                     </div>
                     <div>
                         <Cartwidget/>
@@ -39,12 +53,7 @@ const Navbar = () => {
                  <div className='cartContainer'>
                     <div className='cartContainer'>
                         <Link className='btn' to='/'>Inicio</Link>
-                        <NavDropdown title="Productos" id="navbarScrollingDropdown">
-                        <NavDropdown.Item as={Link} to={'category/Camisas'} href="#action3">Camisas</NavDropdown.Item>
-                       <NavDropdown.Item as={Link} to={'category/Sweaters'} href="#action4">Sweaters</NavDropdown.Item>
-                        <NavDropdown.Item as={Link} to={'category/Pantalones'} href="#action5">Pantalones</NavDropdown.Item>
-                        </NavDropdown>
-                        <Button>Contacto</Button>
+                        {categories.map(category=><Link key={category.id} className='btn' as={Link} to={`category/${category.description}`} >{category.description}</Link>)}
                     </div>
                 </div>
             </nav>

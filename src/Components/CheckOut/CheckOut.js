@@ -17,6 +17,9 @@ export const CheckOut =()=>{
     const MySwal = withReactContent(Swal)
     const navigate=useNavigate()
     
+
+   
+    
     
 
       // cuando el susuario hace submit en el formulario ,tomo todos los datos y los agrego a los datos de contenido del carrito , importe total de la compra y fecha de la compra
@@ -26,8 +29,8 @@ export const CheckOut =()=>{
         e.preventDefault()
         const orderData={buyerData,cart,total,date: Timestamp.fromDate(new Date())}
         const batch =writeBatch(db)
-        const ProdInCartId = cart.map(prod=>prod.id)
-        const orderProductsFromFirestore= await getDocs(query(collection(db,'products'),where(documentId(),'in', ProdInCartId)))
+        const prodInCartId= cart.map(prod=>prod.id)
+        const orderProductsFromFirestore= await getDocs(query(collection(db,'products'),where(documentId(),'in', prodInCartId))) 
         const {docs} = orderProductsFromFirestore
         const withoutStock=[]
         docs.forEach(doc => {
@@ -94,6 +97,7 @@ export const CheckOut =()=>{
       <Form.Group className="mb-3" >
         <Form.Label htmlFor="nombre">Nombre</Form.Label>
         <Form.Control
+          placeholder='Nombre'
           id="nombre"
           name="nombre"
           type="text"
@@ -102,6 +106,7 @@ export const CheckOut =()=>{
         />
         <Form.Label htmlFor="mail">Email</Form.Label>
         <Form.Control
+          placeholder='Email'
           id="mail"
           name="mail"
           type="email"
@@ -110,6 +115,7 @@ export const CheckOut =()=>{
         />
         <Form.Label htmlFor="tel">Telefono</Form.Label>
         <Form.Control
+          placeholder='Telefono'
           id="tel"
           name="tel"
           type="tel"
