@@ -6,10 +6,10 @@
 
 <b>Products Features</b>
 
-| Feature | Coded? | Description |
-| ------------- | :------: | :------------------------------------- | |
-| List Products | &#10004; | Ability of List Products |
-| Stock | &#10004; | Ability of Update the Stock |
+| Feature       |  Coded?  | Description                 |
+| ------------- | :------: | :-------------------------- |
+| List Products | &#10004; | Ability of List Products    |
+| Stock         | &#10004; | Ability of Update the Stock |
 
 <b>Purchase Features</b>
 
@@ -38,4 +38,4 @@ The purpose of this repository it's for test.
 
 Emanuel Suares
 
-### <a href='https://e-commerce-eight-opal.vercel.app/' >DEPLOY<a>
+<a href="https://e-commerce-10i7asgcc-emasuares.vercel.app/"><img src="https://www.drupal.org/files/styles/grid-3-2x/public/project-images/vercel-deploy.png?itok=AyGlptNc" height="32"></a>
