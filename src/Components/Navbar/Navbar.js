@@ -19,14 +19,6 @@ const Navbar = () => {
             })
         },[])
             
-    
-
-    
-
-
-
-
-
     if (cart.length !==0){
     return (
             <nav className='navbar'>

@@ -1,5 +1,5 @@
 import ItemDetail from "../ItemDetail/ItemDetail"; 
-import { useEffect,useState,useContext } from "react";
+import {useContext } from "react";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../Context/CartContext";
 import {getDetail} from '../../Services/Firebase/Firestore'
